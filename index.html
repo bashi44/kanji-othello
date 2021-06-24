@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>漢字オセロ</title>
+    <link rel="stylesheet" href="dist/css/othello.min.css">
+  </head>
+  <body>
+    <!-- ルール説明 -->
+    <section class="message-container">
+      <div class="line-user">
+        <div class="line-icon"></div>
+        <div class="line-name">エルキュール</div>
+      </div>
+      <div class="line-message">
+        <p>【ルール説明】</p>
+        <ul>
+          <li>基本的なルールはオセロと同じじゃ。</li>
+          <li>石を置きたい場所を選択し、答えを入力するのじゃ。</li>
+          <li>答えがどうしてもわからない時は、石を置きたい場所を選んでから、ヒントボタンを押すのじゃ。</li>
+          <li>ただし、ヒントボタンを押す度に獲得枚数が<span class="strong"> − 0.5枚</span>されるから注意が必要じゃ。</li>
+        </ul>
+      </div>
+    </section>
+    <section class="othello-container">
+      <!-- ターン表示 -->
+      <div class="current-turn-wrap">
+        <span class="current-turn red-turn">のターン</span>
+      </div>
+      <!-- 盤面 -->
+      <table class="field">
+        <tr>
+          <td class="masu-wrap" data-question="鮗" data-answer="このしろ" data-hint="こ◯◯ろ">
+            <label class="masu-content white-stone">鮗</label>
+          </td>
+          <td class="masu-wrap" data-question="鰤" data-answer="ぶり" data-hint="ぶ◯">
+            <label class="masu-content white-stone">鰤</label>
+          </td>
+          <td class="masu-wrap" data-question="鱧" data-answer="はも" data-hint="は◯">
+            <label class="masu-content white-stone">鱧</label>
+          </td>
+          <td class="masu-wrap" data-question="鯥" data-answer="むつ" data-hint="む◯">
+            <label class="masu-content white-stone">鯥</label>
+          </td>
+          <td class="masu-wrap" data-question="鮒" data-answer="ふな" data-hint="ふ◯">
+            <label class="masu-content white-stone">鮒</label>
+          </td>
+          <td class="masu-wrap" data-question="鰙" data-answer="わかさぎ" data-hint="わ◯◯ぎ">
+            <label class="masu-content white-stone">鰙</label>
+          </td>
+        </tr>
+        <tr>
+          <td class="masu-wrap" data-question="鱒" data-answer="ます" data-hint="ま◯">
+            <label class="masu-content white-stone">鱒</label>
+          </td>
+          <td class="masu-wrap" data-question="鯵" data-answer="あじ" data-hint="あ◯">
+            <label class="masu-content white-stone">鯵</label>
+          </td>
+          <td class="masu-wrap" data-question="鮪" data-answer="まぐろ" data-hint="ま◯ろ">
+            <label class="masu-content white-stone">鮪</label>
+          </td>
+          <td class="masu-wrap" data-question="鯛" data-answer="たい" data-hint="た◯">
+            <label class="masu-content white-stone">鯛</label>
+          </td>
+          <td class="masu-wrap" data-question="鰻" data-answer="うなぎ" data-hint="う◯ぎ">
+            <label class="masu-content white-stone">鰻</label>
+          </td>
+          <td class="masu-wrap" data-question="鮑" data-answer="あわび" data-hint="あ◯び">
+            <label class="masu-content white-stone">鮑</label>
+          </td>
+        </tr>
+          <tr>
+          <td class="masu-wrap" data-question="鱵" data-answer="さより" data-hint="さ◯り">
+            <label class="masu-content white-stone">鱵</label>
+          </td>
+          <td class="masu-wrap" data-question="鯖" data-answer="さば" data-hint="さ◯">
+            <label class="masu-content white-stone">鯖</label>
+          </td>
+          <td class="masu-wrap" data-question="" data-answer="" data-hint="">
+            <label class="masu-content red-stone"></label>
+          </td>
+          <td class="masu-wrap" data-question="" data-answer="" data-hint="">
+            <label class="masu-content blue-stone"></label>
+          </td>
+          <td class="masu-wrap" data-question="鮃" data-answer="ひらめ" data-hint="ひ◯め">
+            <label class="masu-content white-stone">鮃</label>
+          </td>
+          <td class="masu-wrap" data-question="鯱" data-answer="しゃち" data-hint="し◯◯">
+            <label class="masu-content white-stone">鯱</label>
+          </td>
+        </tr>
+        <tr>
+          <td class="masu-wrap" data-question="鰈" data-answer="かれい" data-hint="か◯い">
+            <label class="masu-content white-stone">鰈</label>
+          </td>
+          <td class="masu-wrap" data-question="鰹" data-answer="かつお" data-hint="か◯お">
+            <label class="masu-content white-stone">鰹</label>
+          </td>
+          <td class="masu-wrap" data-question="" data-answer="" data-hint="">
+            <label class="masu-content blue-stone"></label>
+          </td>
+          <td class="masu-wrap" data-question="" data-answer="" data-hint="">
+            <label class="masu-content red-stone"></label>
+          </td>
+          <td class="masu-wrap" data-question="鯨" data-answer="くじら" data-hint="く◯ら">
+            <label class="masu-content white-stone">鯨</label>
+          </td>
+          <td class="masu-wrap" data-question="鰆" data-answer="さわら" data-hint="さ◯ら">
+            <label class="masu-content white-stone">鰆</label>
+          </td>
+        </tr>
+        <tr>
+          <td class="masu-wrap" data-question="鯰" data-answer="なまず" data-hint="な◯ず">
+            <label class="masu-content white-stone">鯰</label>
+          </td>
+          <td class="masu-wrap" data-question="鮫" data-answer="さめ" data-hint="さ◯">
+            <label class="masu-content white-stone">鮫</label>
+          </td>
+          <td class="masu-wrap" data-question="鮭" data-answer="さけ" data-hint="さ◯">
+            <label class="masu-content white-stone">鮭</label>
+          </td>
+          <td class="masu-wrap" data-question="鰯" data-answer="いわし" data-hint="い◯し">
+            <label class="masu-content white-stone">鰯</label>
+          </td>
+          <td class="masu-wrap" data-question="鯉" data-answer="こい" data-hint="こ◯">
+            <label class="masu-content white-stone">鯉</label>
+          </td>
+          <td class="masu-wrap" data-question="鰌" data-answer="どじょう" data-hint="ど◯◯◯">
+            <label class="masu-content white-stone">鰌</label>
+          </td>
+        </tr>
+        <tr>
+          <td class="masu-wrap" data-question="鯳" data-answer="すけとうだら" data-hint="す◯◯◯◯ら">
+            <label class="masu-content white-stone">鯳</label>
+          </td>
+          <td class="masu-wrap" data-question="鱚" data-answer="きす" data-hint="き◯">
+            <label class="masu-content white-stone">鱚</label>
+          </td>
+          <td class="masu-wrap" data-question="鱸" data-answer="すずき" data-hint="す◯き">
+            <label class="masu-content white-stone">鱸</label>
+          </td>
+          <td class="masu-wrap" data-question="鱈" data-answer="たら" data-hint="た◯">
+            <label class="masu-content white-stone">鱈</label>
+          </td>
+          <td class="masu-wrap" data-question="鰊" data-answer="にしん" data-hint="に◯ん">
+            <label class="masu-content white-stone">鰊</label>
+          </td>
+          <td class="masu-wrap" data-question="鰰" data-answer="はたはた" data-hint="は◯◯た">
+            <label class="masu-content white-stone">鰰</label>
+          </td>
+        </tr>
+      </table>
+      <!-- 解答 -->
+      <div class="answer-container">
+        <input type="text" id="selected" class="answer-input">
+        <input type="button" value="解答" class="answer-btn" disabled>
+      </div>
+      <!-- ヒント -->
+      <div class="hint-container">
+        <div class="hint-btn">ヒント</div>
+        <div class="hint-content close"></div>
+      </div>
+      <!-- スコア表示 -->
+      <div class="score-container">
+        <div class="score-wrap">
+          <div class="score-color-red">赤</div>
+          <div class="red-current-count">２枚</div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-color-blue">青</div>
+          <div class="blue-current-count">２枚</div>
+        </div>
+      </div>
+    </section>
+    <script src="dist/js/othello.min.js"></script>
+  </body>
+</html>

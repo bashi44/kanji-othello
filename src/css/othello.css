@@ -1,0 +1,347 @@
+@charset "UTF-8";
+html {
+  font-size: 62.5%;
+}
+
+html body {
+  font-family: "Arial", "メイリオ",  Meiryo, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+  font-size: 1.5em;
+  line-height: 1.5;
+  color: #333;
+  padding: 15px 10px;
+}
+
+.message-container {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+.message-container .line-user .line-icon {
+  width: 80px;
+  height: 80px;
+  background-image: url("../../image/lql-icon.jpeg");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.message-container .line-user .line-name {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.message-container .line-message {
+  flex-grow: 1;
+  position: relative;
+  background-color: #8CDB66;
+  border-radius: 8px;
+  padding: 15px;
+  margin-left: 20px;
+}
+
+.message-container .line-message::before {
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: -10px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #8CDB66;
+}
+
+.message-container .line-message p {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.message-container .line-message ul li .strong {
+  font-weight: 600;
+}
+
+.message-container .line-message ul li + li {
+  margin-top: 10px;
+}
+
+.othello-container {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.othello-container .current-turn-wrap {
+  margin-bottom: 20px;
+}
+
+.othello-container .current-turn-wrap .current-turn.red-turn::before {
+  content: "赤";
+  color: #f00;
+  font-weight: 600;
+}
+
+.othello-container .current-turn-wrap .current-turn.blue-turn::before {
+  content: "青";
+  color: #00f;
+  font-weight: 600;
+}
+
+.othello-container .field {
+  background-color: #006402;
+  margin: 0 auto 20px;
+}
+
+.othello-container .field tr .masu-wrap {
+  width: calc(100% / 6);
+  height: calc(100% / 6);
+  border: 1px solid #333;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.othello-container .field tr .masu-wrap .masu-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.othello-container .field tr .masu-wrap .masu-content.red-stone, .othello-container .field tr .masu-wrap .masu-content.blue-stone {
+  flex-direction: column;
+}
+
+.othello-container .field tr .masu-wrap .masu-content.red-stone::before, .othello-container .field tr .masu-wrap .masu-content.blue-stone::before {
+  content: attr(answer);
+  display: block;
+  font-size: 0.8rem;
+}
+
+.othello-container .field tr .masu-wrap .masu-content.red-stone::after, .othello-container .field tr .masu-wrap .masu-content.blue-stone::after {
+  content: attr(question);
+  display: block;
+}
+
+.othello-container .field tr .masu-wrap .masu-content.red-stone {
+  color: #fff;
+  background-color: #f00;
+}
+
+.othello-container .field tr .masu-wrap .masu-content.blue-stone {
+  color: #fff;
+  background-color: #00f;
+}
+
+.othello-container .answer-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto 20px;
+}
+
+.othello-container .answer-container .answer-input {
+  display: block;
+  width: 70%;
+  font-size: 16px;
+  text-align: left;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.othello-container .answer-container .answer-btn {
+  height: 30px;
+  color: #fff;
+  background-color: #FF7C00;
+  letter-spacing: 1.5px;
+  border-radius: 5px;
+  padding-left: 1.5px;
+}
+
+.othello-container .hint-container {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+}
+
+.othello-container .hint-container .hint-btn {
+  height: 30px;
+  line-height: 30px;
+}
+
+.othello-container .hint-container .hint-content {
+  visibility: visible;
+  height: 30px;
+  line-height: 30px;
+}
+
+.othello-container .hint-container .hint-content.close {
+  visibility: hidden;
+  height: 0;
+}
+
+.othello-container .score-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.othello-container .score-container .score-wrap {
+  width: 49.5%;
+}
+
+.othello-container .score-container .score-wrap div[class^="score-color"] {
+  font-weight: 600;
+}
+
+.othello-container .score-container .score-wrap .score-color-red {
+  color: #fff;
+  background-color: #f00;
+}
+
+.othello-container .score-container .score-wrap .score-color-blue {
+  color: #fff;
+  background-color: #00f;
+}
+
+.othello-container .score-container .score-wrap div[class$="current-count"] {
+  font-weight: 500;
+}
+
+.othello-container .score-container .score-wrap .red-current-count {
+  color: #f00;
+  border: 2px solid #f00;
+}
+
+.othello-container .score-container .score-wrap .blue-current-count {
+  color: #00f;
+  border: 2px solid #00f;
+}
+
+@media (max-width: 320px) {
+  .othello-container .field {
+    width: 252px;
+    height: 252px;
+  }
+  .othello-container .field tr .masu-wrap .masu-content {
+    width: 42px;
+    height: 42px;
+  }
+  .othello-container .answer-container {
+    width: 212px;
+  }
+  .othello-container .answer-container .answer-btn {
+    width: 50px;
+  }
+  .othello-container .hint-container {
+    width: 132px;
+  }
+  .othello-container .score-container {
+    width: 252px;
+  }
+  .othello-container .score-container .score-wrap div[class^="score-color"] {
+    height: 25px;
+    line-height: 25px;
+  }
+  .othello-container .score-container .score-wrap div[class$="current-count"] {
+    height: 50px;
+    line-height: 50px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 374px) {
+  .othello-container .field {
+    width: 270px;
+    height: 270px;
+  }
+  .othello-container .field tr .masu-wrap .masu-content {
+    width: 45px;
+    height: 45px;
+  }
+  .othello-container .answer-container {
+    width: 230px;
+  }
+  .othello-container .answer-container .answer-btn {
+    width: 50px;
+  }
+  .othello-container .hint-container {
+    width: 150px;
+  }
+  .othello-container .score-container {
+    width: 270px;
+  }
+  .othello-container .score-container .score-wrap div[class^="score-color"] {
+    height: 25px;
+    line-height: 25px;
+  }
+  .othello-container .score-container .score-wrap div[class$="current-count"] {
+    height: 50px;
+    line-height: 50px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 428px) {
+  .othello-container .field {
+    width: 300px;
+    height: 300px;
+  }
+  .othello-container .field tr .masu-wrap .masu-content {
+    width: 50px;
+    height: 50px;
+  }
+  .othello-container .answer-container {
+    width: 260px;
+  }
+  .othello-container .answer-container .answer-btn {
+    width: 70px;
+  }
+  .othello-container .hint-container {
+    width: 180px;
+  }
+  .othello-container .score-container {
+    width: 300px;
+  }
+  .othello-container .score-container .score-wrap div[class^="score-color"] {
+    height: 30px;
+    line-height: 30px;
+  }
+  .othello-container .score-container .score-wrap div[class$="current-count"] {
+    height: 70px;
+    line-height: 70px;
+  }
+}
+
+@media (min-width: 429px) {
+  .othello-container .field {
+    width: 390px;
+    height: 390px;
+  }
+  .othello-container .field tr .masu-wrap .masu-content {
+    width: 65px;
+    height: 65px;
+  }
+  .othello-container .answer-container {
+    width: 350px;
+  }
+  .othello-container .answer-container .answer-btn {
+    width: 70px;
+  }
+  .othello-container .hint-container {
+    width: 270px;
+  }
+  .othello-container .score-container {
+    width: 390px;
+  }
+  .othello-container .score-container .score-wrap div[class^="score-color"] {
+    height: 30px;
+    line-height: 30px;
+  }
+  .othello-container .score-container .score-wrap div[class$="current-count"] {
+    height: 70px;
+    line-height: 70px;
+  }
+}
