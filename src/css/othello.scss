@@ -1,0 +1,275 @@
+@mixin othello-section(
+  $default-size: $default-size,
+  $answer-btn: 70px,
+  $score-color: 30px,
+  $current-count: 70px
+) {
+  .field {
+    width: $default-size;
+    height: $default-size;
+    tr {
+      .masu-wrap {
+        .masu-content {
+          width: $default-size / 6;
+          height: $default-size / 6;
+        }
+      }
+    }
+  }
+  .answer-container {
+    width: $default-size - 40px;
+    .answer-btn {
+      width: $answer-btn;
+    }
+  }
+  .hint-container {
+    width: $default-size - 120px;
+  }
+  .score-container {
+    width: $default-size;
+    .score-wrap {
+      div[class^="score-color"] {
+        height: $score-color;
+        line-height: $score-color;
+      }
+      div[class$="current-count"] {
+        height: $current-count;
+        line-height: $current-count;
+      }
+    }
+  }
+}
+
+html {
+  font-size: 62.5%;
+  body {
+    font-family: "Arial", "メイリオ",  Meiryo, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+    font-size: 1.5em;
+    line-height: 1.5;
+    color: #333;
+    padding: 15px 10px;
+  }
+}
+
+.message-container {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto 30px;
+  .line-user {
+    .line-icon {
+      width: 80px;
+      height: 80px;
+      background-image: url("../../image/lql-icon.jpeg");
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    .line-name {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+  .line-message {
+    flex-grow: 1;
+    position: relative;
+    background-color: #8CDB66;
+    border-radius: 8px;
+    padding: 15px;
+    margin-left: 20px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 35px;
+      left: -10px;
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid #8CDB66;
+    }
+    p {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    ul {
+      li {
+        .strong {
+          font-weight: 600;
+        }
+        & + li {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+.othello-container {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  .current-turn-wrap {
+    margin-bottom: 20px;
+    .current-turn {
+      &.red-turn {
+        &::before {
+          content: "赤";
+          color: #f00;
+          font-weight: 600;
+        }
+      }
+      &.blue-turn {
+        &::before {
+          content: "青";
+          color: #00f;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .field {
+    background-color: #006402;
+    margin: 0 auto 20px;
+    tr {
+      .masu-wrap {
+        width: calc(100% / 6);
+        height: calc(100% / 6);
+        border: 1px solid #333;
+        border-radius: 50%;
+        padding: 2px;
+        .masu-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+          border-radius: 50%;
+          &.red-stone,
+          &.blue-stone {
+            flex-direction: column;
+            &::before {
+              content: attr(answer);
+              display: block;
+              font-size: 0.8rem;
+            }
+            &::after {
+              content: attr(question);
+              display: block;
+            }
+          }
+          &.red-stone {
+            color: #fff;
+            background-color: #f00;
+          }
+          &.blue-stone {
+            color: #fff;
+            background-color: #00f;
+          }
+        }
+      }  
+    }
+  }
+  .answer-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto 20px;
+    .answer-input {
+      display: block;
+      width: 70%;
+      font-size: 16px;
+      text-align: left;
+      border: 1px solid #333;
+      border-radius: 5px;
+      padding-left: 5px;
+    }
+    .answer-btn {
+      height: 30px;
+      color: #fff;
+      background-color: #FF7C00;
+      letter-spacing: 1.5px;
+      border-radius: 5px;
+      padding-left: 1.5px;
+    }
+  }
+  .hint-container {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 0 auto 20px;
+    .hint-btn {
+      height: 30px;
+      line-height: 30px;
+    }
+    .hint-content {
+      visibility: visible;
+      height: 30px;
+      line-height: 30px;
+      &.close {
+        visibility: hidden;
+        height: 0;
+      }
+    }
+  }
+  .score-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    .score-wrap {
+      width: 49.5%;
+      div[class^="score-color"] {
+        font-weight: 600;
+      }
+      .score-color-red {
+        color: #fff;
+        background-color: #f00;
+      }
+      .score-color-blue {
+        color: #fff;
+        background-color: #00f;
+      }
+      div[class$="current-count"] {
+        font-weight: 500;
+      }
+      .red-current-count {
+        color: #f00;
+        border: 2px solid #f00;
+      }
+      .blue-current-count {
+        color: #00f;
+        border: 2px solid #00f;
+      }
+    }
+  }
+  @media(max-width: 320px) {
+    @include othello-section(
+      $default-size: 252px,
+      $answer-btn: 50px,
+      $score-color: 25px,
+      $current-count: 50px
+    );
+  }
+
+  // iphone5/seより大きい ~ iphone6未満
+  @media(min-width: 321px) and (max-width: 374px) {
+    @include othello-section(
+      $default-size: 270px,
+      $answer-btn: 50px,
+      $score-color: 25px,
+      $current-count: 50px
+    );
+  }
+  // iphone6 ~ iphone12promax
+  @media(min-width: 375px) and (max-width: 428px) {
+    @include othello-section (
+      $default-size: 300px
+    );
+  }
+  // iphone12promaxより大きい
+  @media(min-width: 429px) {
+    @include othello-section (
+      $default-size: 390px
+    );
+  }
+}
